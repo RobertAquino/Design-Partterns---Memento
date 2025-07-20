@@ -1,32 +1,16 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-package br.edu.aluno.ifnmg.raa16.designpatternsmemento;
-
-import br.edu.aluno.ifnmg.raa16.designpatternsbuilder.Computador;
-import br.edu.aluno.ifnmg.raa16.designpatternsbuilder.DiretorConstrucao;
+package br.edu.aluno.ifnmg.raa16.designpatternsbuilder;
 
 /**
  *
  * @author robert
  */
-public class DesignPatternsMemento {
+public class DesignPatternsBuilder {
 
     public static void main(String[] args) {
-        EditorTexto editor = new EditorTexto();
-        Caretaker caretaker = new Caretaker();
-
-        System.out.println("Estado inicial: " + editor);
-        editor.escrever("Olá, ");
-        caretaker.adicionarMemento(editor.salvarEstado());
-        System.out.println("Após 'Olá, ': " + editor);
-        editor.escrever("mundo!");
-        System.out.println("Após 'mundo!': " + editor);
-        editor.restaurarEstado(caretaker.getUltimoMemento());
-        System.out.println("Após desfazer: " + editor);
-        
-        System.out.println(" ");
         // Criar um computador básico
         Computador pcBasico = new Computador.ComputadorBuilder()
                 .setProcessador("Intel i3")
