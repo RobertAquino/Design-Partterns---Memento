@@ -27,8 +27,7 @@ public class DesignPatternsMemento {
         System.out.println("Após desfazer: " + editor);
         
         System.out.println(" ");
-        // Criar um computador básico
-        Computador pcBasico = new Computador.ComputadorBuilder()
+       Computador pcBasico = new Computador.ComputadorBuilder()
                 .setProcessador("Intel i3")
                 .setMemoriaRam(8)
                 .setArmazenamento(256)

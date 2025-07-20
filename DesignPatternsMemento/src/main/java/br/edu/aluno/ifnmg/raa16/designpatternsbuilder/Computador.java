@@ -1,28 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.aluno.ifnmg.raa16.designpatternsbuilder;
 
 public class Computador {
-    // Atributos privados (estado do produto)
-    private String processador; // Obrigatório
-    private int memoriaRam;     // Obrigatório
-    private int armazenamento;  // Obrigatório
-    private String sistemaOperacional; // Opcional
-    private boolean temPlacaVideo;     // Opcional
+    private String processador;
+    private int memoriaRam;
+    private int armazenamento;
+    private String sistemaOperacional;
+    private boolean temPlacaVideo;
 
-    // Construtor privado para forçar uso do Builder
     private Computador() {}
 
-    // Getters (somente leitura após construção)
     public String getProcessador() { return processador; }
     public int getMemoriaRam() { return memoriaRam; }
     public int getArmazenamento() { return armazenamento; }
     public String getSistemaOperacional() { return sistemaOperacional; }
     public boolean isTemPlacaVideo() { return temPlacaVideo; }
 
-    // Método toString para representação textual
     @Override
     public String toString() {
         return "Computador{" +
@@ -34,37 +26,40 @@ public class Computador {
                '}';
     }
 
-    // Classe Builder aninhada (relacionamento de composição)
-    public static class ComputadorBuilder {
-        private Computador computador = new Computador(); // Instância do produto sendo construído
+    public static class ComputadorBuilder implements Builder {
+        private Computador computador = new Computador();
 
-        // Métodos para configurar atributos (encadeáveis)
+        @Override
         public ComputadorBuilder setProcessador(String processador) {
             computador.processador = processador;
             return this;
         }
 
+        @Override
         public ComputadorBuilder setMemoriaRam(int memoriaRam) {
             computador.memoriaRam = memoriaRam;
             return this;
         }
 
+        @Override
         public ComputadorBuilder setArmazenamento(int armazenamento) {
             computador.armazenamento = armazenamento;
             return this;
         }
 
+        @Override
         public ComputadorBuilder setSistemaOperacional(String sistemaOperacional) {
             computador.sistemaOperacional = sistemaOperacional;
             return this;
         }
 
+        @Override
         public ComputadorBuilder setTemPlacaVideo(boolean temPlacaVideo) {
             computador.temPlacaVideo = temPlacaVideo;
             return this;
         }
 
-        // Método final que retorna o produto construído
+        @Override
         public Computador build() {
             if (computador.processador == null || computador.memoriaRam <= 0 || computador.armazenamento <= 0) {
                 throw new IllegalStateException("Processador, RAM e armazenamento são obrigatórios!");
