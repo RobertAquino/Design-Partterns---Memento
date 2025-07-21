@@ -1,33 +1,23 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-package br.edu.aluno.ifnmg.raa16.designpatternsmemento;
+package br.edu.aluno.ifnmg.raa16.designpatterns;
 
 import br.edu.aluno.ifnmg.raa16.designpatternsbuilder.Computador;
 import br.edu.aluno.ifnmg.raa16.designpatternsbuilder.DiretorConstrucao;
+import br.edu.aluno.ifnmg.raa16.designpatternsmemento.Caretaker;
+import br.edu.aluno.ifnmg.raa16.designpatternsmemento.EditorTexto;
 
 /**
  *
  * @author robert
  */
-public class DesignPatternsMemento {
-
-    public static void main(String[] args) {
-        EditorTexto editor = new EditorTexto();
-        Caretaker caretaker = new Caretaker();
-
-        System.out.println("Estado inicial: " + editor);
-        editor.escrever("Olá, ");
-        caretaker.adicionarMemento(editor.salvarEstado());
-        System.out.println("Após 'Olá, ': " + editor);
-        editor.escrever("mundo!");
-        System.out.println("Após 'mundo!': " + editor);
-        editor.restaurarEstado(caretaker.getUltimoMemento());
-        System.out.println("Após desfazer: " + editor);
+public class Program {
+     public static void main(String[] args) {
         
-        System.out.println(" ");
-       Computador pcBasico = new Computador.ComputadorBuilder()
+        System.out.println("Design Pattern - Builder");
+        Computador pcBasico = new Computador.ComputadorBuilder()
                 .setProcessador("Intel i3")
                 .setMemoriaRam(8)
                 .setArmazenamento(256)
@@ -58,5 +48,21 @@ public class DesignPatternsMemento {
         // Usar o Diretor para criar um PC Gamer
         Computador pcGamer = new DiretorConstrucao().construirPcGamer(new Computador.ComputadorBuilder());
         System.out.println("PC Gamer: " + pcGamer);
+         
+        System.out.println("");
+        System.out.println("Design Pattern - Memento"); 
+        
+        EditorTexto editor = new EditorTexto();
+        Caretaker caretaker = new Caretaker();
+
+        System.out.println("Estado inicial: " + editor);
+        editor.escrever("Olá, ");
+        caretaker.adicionarMemento(editor.salvarEstado());
+        System.out.println("Após 'Olá, ': " + editor);
+        editor.escrever("mundo!");
+        System.out.println("Após 'mundo!': " + editor);
+        editor.restaurarEstado(caretaker.getUltimoMemento());
+        System.out.println("Após desfazer: " + editor);
+        
     }
 }
